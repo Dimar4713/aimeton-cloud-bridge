@@ -34,7 +34,7 @@ Resolve required errors before publishing the release. Warnings should be review
 The release tag and title must exactly match the version in `manifest.json`:
 
 ```text
-1.0.3
+1.0.5
 ```
 
 Do not use a `v` prefix.
@@ -50,8 +50,8 @@ styles.css
 Pushing the exact tag starts the included release workflow:
 
 ```bash
-git tag 1.0.3
-git push origin 1.0.3
+git tag 1.0.5
+git push origin 1.0.5
 ```
 
 ## 5. Submit through the Community developer dashboard
@@ -74,7 +74,7 @@ Recommended disclosures:
 
 - Network access: Yandex Disk API and file endpoints.
 - Local file access: selected uploads and requested downloads inside the vault.
-- Credentials: user-provided OAuth token and optional proxy credentials stored locally in `data.json` in version 1.0.3.
+- Credentials: user-provided OAuth token and optional proxy credentials stored locally in `data.json` in version 1.0.5.
 - Proxy support: optional user-configured desktop proxy.
 - Analytics: none.
 - Author-controlled backend: none.
