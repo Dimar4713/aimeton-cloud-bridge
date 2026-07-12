@@ -1,0 +1,18 @@
+{
+  "name": "aimeton-cloud-bridge",
+  "version": "1.0.5",
+  "description": "Community plugin for accessing Yandex Disk from a vault.",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "npm run build && node scripts/check.mjs && node tests/smoke.test.cjs && node tests/legacy-mobile.test.cjs",
+    "release:prepare": "node scripts/prepare-release.mjs",
+    "version:bump": "node scripts/bump-version.mjs"
+  },
+  "license": "MIT",
+  "author": "Dimar4713"
+}
