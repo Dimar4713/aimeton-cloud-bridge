@@ -1,0 +1,10 @@
+{
+  "id": "aimeton-cloud-bridge",
+  "name": "AIMETON Cloud Bridge",
+  "version": "1.0.5",
+  "minAppVersion": "1.5.0",
+  "description": "Browse and transfer files between your vault and Yandex Disk, with previews, progress, bilingual UI, and desktop proxy support.",
+  "author": "Dimar4713",
+  "authorUrl": "https://github.com/Dimar4713",
+  "isDesktopOnly": false
+}
