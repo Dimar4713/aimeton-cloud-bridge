@@ -1,0 +1,34 @@
+# Dependencies and build output
+node_modules/
+release/
+*.zip
+*.sha256
+
+# Local vault and plugin data
+.obsidian/
+data.json
+**/data.json
+*.vault/
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+.tmp/
+tmp/
+
+# Generated plugin bundle (release asset only)
+main.js

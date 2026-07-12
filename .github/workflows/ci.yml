@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm run check
+      - name: Verify generated bundle is not tracked
+        shell: bash
+        run: |
+          if git ls-files --error-unmatch main.js >/dev/null 2>&1; then
+            echo "main.js must be a release asset, not a tracked source file."
+            exit 1
+          fi

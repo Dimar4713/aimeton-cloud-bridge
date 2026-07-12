@@ -1,0 +1,104 @@
+/* Yandex Disk Explorer - Additional Styles */
+
+.aimeton-cloud-bridge {
+    --yd-accent: var(--text-accent, #7c3aed);
+}
+
+.aimeton-cloud-bridge .nav-folder-title {
+    font-weight: 500;
+}
+
+.aimeton-cloud-bridge .yd-item {
+    user-select: none;
+}
+
+.aimeton-cloud-bridge .yd-item-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Scrollbar styling */
+.aimeton-cloud-bridge::-webkit-scrollbar {
+    width: 6px;
+}
+
+.aimeton-cloud-bridge::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.aimeton-cloud-bridge::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 3px;
+}
+
+.aimeton-cloud-bridge::-webkit-scrollbar-thumb:hover {
+    background: var(--background-modifier-border-hover);
+}
+
+/* Proxy settings */
+.yd-settings-warning {
+    margin: 10px 0 16px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-orange, var(--background-modifier-border));
+    border-radius: 6px;
+    background: var(--background-secondary);
+    color: var(--text-warning);
+    line-height: 1.45;
+}
+
+.yd-preview-modal img {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+
+/* Transfer status v1.3.2 */
+.aimeton-cloud-bridge .yd-item-operation.visible { display: block; }
+.aimeton-cloud-bridge .yd-item.is-busy { background: var(--background-modifier-hover); }
+
+
+/* OAuth token help */
+.yd-oauth-help {
+    margin: 4px 0 18px;
+    padding: 10px 12px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m, 8px);
+    background: var(--background-secondary);
+}
+
+.yd-oauth-help summary {
+    cursor: pointer;
+    color: var(--text-accent);
+    font-weight: 600;
+    user-select: none;
+}
+
+.yd-oauth-help[open] summary {
+    margin-bottom: 10px;
+}
+
+.yd-oauth-help ol {
+    margin: 0 0 10px;
+    padding-inline-start: 24px;
+}
+
+.yd-oauth-help li {
+    margin: 6px 0;
+    line-height: 1.45;
+}
+
+.yd-oauth-help-fallback {
+    margin: 10px 0;
+    line-height: 1.45;
+}
+
+.yd-oauth-help-security {
+    padding: 8px 10px;
+    border-inline-start: 3px solid var(--color-orange, var(--text-warning));
+    background: var(--background-primary-alt);
+    color: var(--text-muted);
+    line-height: 1.4;
+}
