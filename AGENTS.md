@@ -1,8 +1,47 @@
-# Agent instructions
+# AGENTS.md — AIMETON Cloud Bridge
 
-This repository contains a cross-platform community plugin.
+## Scope
 
-## Non-negotiable rules
+These rules apply to the whole `aimeton-cloud-bridge` repository. Narrower `AGENTS.md` files may strengthen but never weaken them.
+
+Canonical AIMETON-wide governance: `Dimar4713/aimeton-architecture/AGENTS.md`.
+
+This repository contains a released cross-platform community plugin, so public compatibility, privacy and release invariants take precedence over convenience.
+
+## Before work
+
+1. Read `README.md`, manifest/package metadata, release/compatibility docs, active Issues/PR/CI and the exact current branch SHA.
+2. For cross-repository work, read the root `AGENTS.md` of every touched AIMETON repository before the first mutation.
+3. For infrastructure/proxy/network reality use `aimeton-infrastructure`; for normative AIMETON decisions use `aimeton-architecture`.
+4. Do not treat one platform, proxy, token, device or UI observation as the complete runtime truth.
+
+## 3×3 Reality Check
+
+Before a blocker, root-cause, compatibility claim, network/security conclusion, release decision or consequential write, treat the first explanation as a hypothesis.
+
+Check architecture/lifecycle, alternatives/control paths, history/live; source/contract, runtime/live, independent evidence; perform a falsification attempt.
+
+Claims such as `no access`, `network impossible`, `only path`, `mobile unsupported`, or `release ready` are provisional until this gate is complete.
+
+## GitHub / execution fallback
+
+Before asking the owner for a manual GitHub action, check:
+
+`GitHub connector/API → AIMETON GitHub MCP/router → REST/GraphQL/gh through trusted AIMETON server → owner`.
+
+A limitation of one connector/token/workflow does not prove a system-level AIMETON limitation. Never expose secret values; reuse existing AIMETON auth/secret contracts before proposing new ones.
+
+## Continuous Mission / Motor State
+
+```text
+READ → DECIDE → ACTION → READ-BACK → EVIDENCE → NEXT SAFE ACTION
+```
+
+After every material action, verify the actual result and execute the next safe unambiguous step unless an objective authority blocker exists. Absence of a new owner message is not a blocker.
+
+Maintain current → next → following actions. Before ending a tool session perform MOTOR-CHECK and STOP-CHECK. A GREEN build, PR or local smoke is a state transition, not necessarily mission completion.
+
+## Non-negotiable plugin rules
 
 1. Keep the plugin ID `aimeton-cloud-bridge` stable after public release.
 2. Never commit OAuth tokens, proxy passwords, private Yandex Disk URLs, or vault data.
@@ -13,11 +52,19 @@ This repository contains a cross-platform community plugin.
 7. Do not use `innerHTML`, `style.cssText`, or direct `.style.*` assignments. Use DOM creation APIs, CSS classes, and `setCssProps` for dynamic values.
 8. All user-visible strings must exist in both Russian and English dictionaries.
 9. Preserve migration from `.obsidian/plugins/yandex-disk-explorer/data.json` until maintainers explicitly deprecate it.
-10. Run `npm run build` and `npm run check` before committing.
+10. Run `npm run build` and `npm run check` before committing/releasing applicable changes.
+
+## Network / source-of-truth boundary
+
+Proxy/network infrastructure facts belong to `aimeton-infrastructure`; this plugin owns only its client-side proxy/network contract and observed compatibility.
+
+Do not copy mutable infrastructure state into this repository as an independent source of truth. A generated cross-repo projection must pin canonical repository, exact source SHA, source path, immutable blob/object id and/or digest; drift must fail closed.
+
+One failed network route must trigger search for existing permitted AIMETON control paths before declaring a blocker. Do not silently weaken strict manual proxy semantics as a workaround.
 
 ## Release files
 
-A GitHub release must attach exactly the current generated files:
+A GitHub release must attach exactly the generated files required by the current plugin release contract:
 
 - `main.js`
 - `manifest.json`
@@ -25,87 +72,27 @@ A GitHub release must attach exactly the current generated files:
 
 The Git tag must exactly match `manifest.json.version` and must not include a `v` prefix.
 
-## Непрерывная синхронизация образа проекта AIMETON
+Release readiness requires source/build checks plus read-back of tag/version/assets; creating a tag or GREEN CI alone is insufficient evidence.
 
-Эти дополнительные правила действуют для всего репозитория AIMETON Cloud Bridge и обязательны для любого человека или AI-агента, который исследует, проектирует, планирует, реализует, проверяет, выпускает или сопровождает проект.
+## Documentation / project truth
 
-Более узкий `AGENTS.md` в подкаталоге может дополнять эти правила для своей области, но не может отменять нормативные принципы непрерывной синхронизации образа проекта.
+Clearly distinguish planned, implemented, observed and verified state. Material architecture, compatibility, privacy, migration or release changes must be reflected in the existing documentation in the same PR.
 
-Каждое принятое решение, существенное уточнение, обнаруженное ограничение, изменение направления или подтверждённый результат MUST быть внесён в соответствующую документацию независимо от фазы, на которой он возник: исследование, планирование, проектирование, разработка, тестирование, приёмка, выпуск, эксплуатация или разбор инцидента.
+Chat, an Issue or a PR by itself is not a canonical factual update when the project image changed.
 
-Чат, устное обсуждение, комментарий, Issue или Pull Request сами по себе не являются достаточной фиксацией, если решение изменяет архитектурный, плановый или фактический образ проекта.
+## Authority boundary
 
-### Перед началом работы
+Without owner authorization do not create new paid resources, weaken privacy/security, expose credentials/private vault data, make irreversible production/provider changes, or alter legal/license/public-release invariants.
 
-1. Прочитать корневой `README.md`, относящиеся к задаче архитектурные спецификации, ADR, roadmap, планы, status/baseline, incident, release и evidence-записи, а также связанные Issues и Pull Requests.
-2. Установить:
-   - действительное фактическое состояние;
-   - принятое целевое и плановое состояние;
-   - ранее принятые ограничения, зависимости и критерии приёмки.
-3. Не начинать реализацию на основании только последнего сообщения, отдельной Issue или устаревшего документа, если они расходятся с нормативными источниками.
-4. При расхождении источников сначала явно зафиксировать конфликт и определить действующее решение; не смешивать несовместимые версии образа проекта.
+## Definition of Done
 
-### При возникновении решения или уточнения
+Applicable items are mandatory:
 
-Обновить все затронутые источники истины. Использовать уже принятую структуру и регистр имён каталогов конкретного репозитория; не создавать параллельное дерево документации только ради нового названия.
-
-| Изменение | Место фиксации |
-|---|---|
-| Общесистемный архитектурный принцип, термин, контракт, инвариант или компромисс | `aimeton-architecture` и профильная документация репозитория-исполнителя; при необходимости ADR/spec |
-| Локальная архитектура, API, схема данных, протокол или эксплуатационный контракт | Профильная техническая документация, ADR/spec и связанные тесты |
-| Целевое состояние, этапность, приоритет, срок или зависимость | Roadmap/план, GitHub Project и Issue |
-| Фактически реализованное поведение, версия и известное ограничение | README, current status, release/baseline или incident note — в зависимости от принятой структуры |
-| Проверенный результат, метрика или доказательство | Тесты, validation evidence и связанная документация |
-| Исследовательская гипотеза, ещё не ставшая решением | Research-запись с явным статусом гипотезы |
-| Изменение навигации или состава документов | Индекс документации, manifest и/или корневой README |
-| Отмена или замена прежнего решения | Новая датированная запись со ссылкой на заменённое решение; прежняя история сохраняется |
-
-Если подходящего документа ещё нет, создать минимальную запись в существующей области документации и включить её в навигацию.
-
-### Межрепозиторная синхронизация AIMETON
-
-1. `aimeton-architecture` хранит нормативный общесистемный и плановый образ AIMETON.
-2. Репозиторий-исполнитель хранит фактическое поведение, локальные контракты, ограничения реализации и evidence.
-3. `aimeton-infrastructure` хранит фактический образ развёртывания, окружений, жизненного цикла, эксплуатационных контрактов и инфраструктурных рисков.
-4. `aimeton-test-sentinel` хранит независимые критерии, сценарии и evidence приёмки; он не должен объявлять подтверждённым то, чего фактически не проверял.
-5. Если решение затрагивает несколько репозиториев, обновления должны быть связаны ссылками на Issues, PR, commits, ADR или evidence. Локальный коммит без отражения межрепозиторного последствия не завершает работу.
-6. Плановое изменение в одном репозитории не должно описываться как уже реализованное в другом. Факт подтверждается кодом, конфигурацией, развёртыванием и/или независимым evidence.
-
-### Обязательные различия
-
-Документация MUST явно различать:
-
-- принятое решение и рассматриваемую гипотезу;
-- целевое/плановое состояние и фактическое состояние;
-- реализованное и только запланированное;
-- подтверждённый результат и ожидание;
-- действующее решение и отменённое/заменённое решение;
-- локальное состояние компонента и состояние общего контура AIMETON.
-
-История не переписывается задним числом: изменение фиксируется датой, основанием и ссылкой на Issue, PR, commit, тест, ADR или другое evidence.
-
-### Защита плановых дат и временной структуры GitHub Project
-
-1. Уже заполненные `Start date` и `Target date`, а также их совместимые зеркала `Planned start` и `Planned finish`, являются защищённым состоянием проекта. Коррекция roadmap не должна очищать, неявно заменять или переносить эти значения.
-2. Перед массовой синхронизацией, изменением схемы Project, полей дат, Roadmap views или календаря задач MUST быть выполнены чтение затрагиваемых карточек, snapshot исходных значений и project-wide dry-run.
-3. Коррекция плана изменяет даты только у явно перечисленных задач. Для каждой такой задачи фиксируются прежнее значение, новое значение и основание. Новые задачи получают даты отдельно; неизменяемые задачи сохраняют введённые даты.
-4. Канонические плановые поля — `Start date` и `Target date`. Нельзя создавать дублирующую или заменяющую пару полей без явной миграции значений, настройки представлений и документированного основания.
-5. Любое расхождение между каноническими полями, зеркалами, Issue и утверждённым планом останавливает операцию fail-closed до первой записи. Автоматический выбор одной из конфликтующих дат запрещён.
-6. Apply разрешён только после dry-run без конфликтов. После apply обязательны read-back всех затронутых значений и повторный dry-run, который должен показать нулевую дельту.
-7. Изменение Roadmap view не считается завершённым без проверки временной раскладки. Если API не позволяет подтвердить отображение, создаётся или сохраняется открытая governance Issue до визуального подтверждения владельцем проекта.
-8. Обычная lifecycle-синхронизация может изменять только предусмотренные ею поля статуса и фактических дат. Плановые даты изменяются лишь отдельной явно вызванной операцией планирования или миграции.
-
-### Перед завершением работы
-
-1. Проверить, изменился ли архитектурный, плановый или фактический образ проекта либо общего контура AIMETON.
-2. Обновить соответствующие документы в том же PR/коммите. Если межрепозиторное обновление объективно нельзя выполнить одновременно, создать связанную блокирующую Issue и не объявлять работу полностью завершённой.
-3. Проверить согласованность документации, roadmap, Project, Issues, кода, конфигурации, тестов, релиза и наблюдаемого результата.
-4. Проверить ссылки и навигацию к новым или перенесённым документам.
-5. В итоговом сообщении перечислить:
-   - какие записи актуализированы;
-   - какой фактический и плановый образ теперь зафиксирован;
-   - какие расхождения или блокировки остаются.
-
-## Нормативный принцип
-
-> Фактический развивающийся и плановый образ проекта должен непрерывно проявляться в соответствующих записях в соответствующих местах. Решение, оставшееся только в разговоре, Issue, Pull Request или локальном контексте исполнителя, считается не интегрированным в проект.
+- source and tests/build checks updated;
+- desktop/mobile compatibility claims backed by actual evidence;
+- release metadata/assets verified when releasing;
+- privacy/proxy invariants preserved;
+- docs/status synchronized;
+- cross-repo provenance/drift checked;
+- next safe action executed or exact blocker recorded;
+- strong conclusions passed 3×3.
